@@ -64,13 +64,31 @@
       color: #2f4f2f;
     }
   </style>
+
+  <script>
+    function openInstagram(e) {
+      e.preventDefault();
+
+      const username = "gottathreaditup._";
+      const appLink = `intent://instagram.com/_u/${username}#Intent;package=com.instagram.android;scheme=https;end`;
+      const webLink = `https://www.instagram.com/${username}/`;
+
+      // Try opening app
+      window.location.href = appLink;
+
+      // Fallback to web after 800ms
+      setTimeout(() => {
+        window.location.href = webLink;
+      }, 800);
+    }
+  </script>
 </head>
 <body>
   <div class="container">
     <img src="logo.png" alt="Threaded Up Logo" class="logo" />
 
-    <!-- Instagram (ANDROID SAFE) -->
-    <a class="btn" href="https://www.instagram.com/gottathreaditup._/" target="_blank" rel="noopener">
+    <!-- Instagram (ANDROID FIX WITH FALLBACK) -->
+    <a class="btn" href="#" onclick="openInstagram(event)">
       <i class="fab fa-instagram"></i> Instagram
     </a>
 
